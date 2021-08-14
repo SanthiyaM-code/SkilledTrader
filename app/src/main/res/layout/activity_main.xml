@@ -12,6 +12,16 @@
         android:layout_marginTop="20dp"
         android:orientation="vertical">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show all"
+            android:id="@+id/showAll"
+            android:textColor="@color/purple_200"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="25dp"
+            android:textSize="20dp"
+            android:fontFamily="@font/nunito"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -23,11 +33,11 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
@@ -97,6 +107,34 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
                     android:text="Save"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/btn_update"
+                    android:textAllCaps="false"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/nunito"
+                    android:textSize="18sp"
+                    android:background="@drawable/btn_bg"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Update"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/btn_remove"
+                    android:textAllCaps="false"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/nunito"
+                    android:textSize="18sp"
+                    android:background="@drawable/btn_bg"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Remove"/>
             </LinearLayout>
 
         </RelativeLayout>

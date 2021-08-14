@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "374331615139",
+    "project_id": "skilledtraders-b8705",
+    "storage_bucket": "skilledtraders-b8705.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374331615139:android:df8f481fabf82511f3dc16",
+        "android_client_info": {
+          "package_name": "com.codewithsandy.skt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374331615139-lfhffrtpljniq4vavhvmhlp6d6pvp18f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvEcqRzQHV1sxLAB60Njc9eBTLaqPHvn0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374331615139-lfhffrtpljniq4vavhvmhlp6d6pvp18f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
