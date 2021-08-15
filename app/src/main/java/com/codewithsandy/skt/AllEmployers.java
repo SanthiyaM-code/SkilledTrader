@@ -5,11 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.codewithsandy.skt.databinding.ActivityAllEmployersBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -20,11 +28,18 @@ public class AllEmployers extends AppCompatActivity {
     AllEmpRecAdapter adapter;
     DAOEmployee dao;
 
+    FirebaseDatabase database=FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference,fav_ref,fav_list_ref;
+    Boolean isFav;
+    Employee employee;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityAllEmployersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
 
 
         binding.allEmployeesRec.setHasFixedSize(true);
@@ -33,8 +48,30 @@ public class AllEmployers extends AppCompatActivity {
         adapter=new AllEmpRecAdapter(this);
         binding.allEmployeesRec.setAdapter(adapter);
 
+
         dao=new DAOEmployee();
         loadData();
+
+        binding.searchbar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.filter(s);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+
+
 
     }
 
@@ -51,7 +88,6 @@ public class AllEmployers extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
 
             }
-
             @Override
             public void onCancelled(@NonNull  DatabaseError error) {
 

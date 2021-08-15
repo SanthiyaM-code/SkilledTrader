@@ -22,6 +22,16 @@
             android:textSize="20dp"
             android:fontFamily="@font/nunito"/>
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search by Filter"
+            android:id="@+id/searchTv"
+            android:textColor="@color/purple_200"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="25dp"
+            android:textSize="20dp"
+            android:fontFamily="@font/nunito"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
