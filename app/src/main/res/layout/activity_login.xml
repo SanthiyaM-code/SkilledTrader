@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <!--Edittext for getting users phone number-->
     <EditText
@@ -53,5 +53,6 @@
         android:text="resend"
         android:layout_below="@id/idBtnVerify"
         android:id="@+id/resend"/>
+
 
 </RelativeLayout>

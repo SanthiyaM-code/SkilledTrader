@@ -1,4 +1,4 @@
-package com.codewithsandy.skt;
+package com.codewithsandy.skt.Models;
 
 public class Employee {
 

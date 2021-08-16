@@ -1,5 +1,6 @@
-package com.codewithsandy.skt;
+package com.codewithsandy.skt.DAO;
 
+import com.codewithsandy.skt.Models.Employee;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -18,7 +19,7 @@ public class DAOEmployee {
 
     public Task<Void> add(Employee emp,String phone)
     {
-        return databaseReference.child(phone).setValue(emp);
+        return databaseReference.child(phone).child("Details").setValue(emp);
     }
     public Task<Void> update (String key, HashMap<String,Object> hashMap)
     {

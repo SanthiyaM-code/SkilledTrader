@@ -1,4 +1,4 @@
-package com.codewithsandy.skt;
+package com.codewithsandy.skt.ViewHolders;
 
 import android.view.View;
 import android.widget.ImageButton;
@@ -7,14 +7,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codewithsandy.skt.R;
 import com.codewithsandy.skt.databinding.AllEmployeeRecViewBinding;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AllEmployeeViewHolder extends RecyclerView.ViewHolder {
     public TextView all_name,all_category,all_phNo,all_loc;
-   
-
+    public ImageButton fav_btn;
 
     public AllEmployeeViewHolder(@NonNull  View itemView) {
         super(itemView);
@@ -23,8 +23,10 @@ public class AllEmployeeViewHolder extends RecyclerView.ViewHolder {
         all_category=itemView.findViewById(R.id.all_cat);
         all_phNo=itemView.findViewById(R.id.all_phNo);
         all_loc=itemView.findViewById(R.id.all_loc);
+        fav_btn=itemView.findViewById(R.id.fav_btn);
 
 
 
     }
 }
+

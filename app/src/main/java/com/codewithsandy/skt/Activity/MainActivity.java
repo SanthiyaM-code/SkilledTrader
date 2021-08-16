@@ -1,4 +1,4 @@
-package com.codewithsandy.skt;
+package com.codewithsandy.skt.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,11 +7,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.codewithsandy.skt.DAO.DAOEmployee;
+import com.codewithsandy.skt.Models.Employee;
 import com.codewithsandy.skt.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
@@ -30,7 +30,23 @@ public class MainActivity extends AppCompatActivity {
         binding.showAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,AllEmployers.class));
+                startActivity(new Intent(MainActivity.this, AllEmployers.class));
+            }
+        });
+
+        binding.showFavBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ActivityFavourites.class));
+
+            }
+        });
+
+        binding.logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
             }
         });
 
@@ -40,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String phoneNumber="";
-
                 FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null)
                 {

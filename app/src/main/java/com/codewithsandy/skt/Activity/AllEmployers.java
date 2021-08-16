@@ -1,4 +1,4 @@
-package com.codewithsandy.skt;
+package com.codewithsandy.skt.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,17 +7,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.LinearLayout;
+import android.util.Log;
 
+import com.codewithsandy.skt.Adapters.AllEmpRecAdapter;
+import com.codewithsandy.skt.DAO.DAOEmployee;
+import com.codewithsandy.skt.Models.Employee;
 import com.codewithsandy.skt.databinding.ActivityAllEmployersBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -27,17 +26,17 @@ public class AllEmployers extends AppCompatActivity {
 
     AllEmpRecAdapter adapter;
     DAOEmployee dao;
+    String phoneNumber;
 
-    FirebaseDatabase database=FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference,fav_ref,fav_list_ref;
-    Boolean isFav;
-    Employee employee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityAllEmployersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+        phoneNumber=user.getPhoneNumber();
 
 
 
@@ -68,21 +67,28 @@ public class AllEmployers extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
     }
 
     private void loadData() {
+
+
         dao.get().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull  DataSnapshot snapshot) {
                 ArrayList<Employee> emps=new ArrayList<>();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    Employee emp=dataSnapshot.getValue(Employee.class);
-                    emps.add(emp);
+
+                        for (DataSnapshot details:dataSnapshot.getChildren()) {
+                            Log.e("sandy value is", String.valueOf(details.getKey()));
+
+
+                            if ((String.valueOf(details.getKey()).equals("Details"))) {
+                                Employee emp = details.getValue(Employee.class);
+                                emps.add(emp);
+                                break;
+                            }
+                        }
+
                 }
                 adapter.setEmpList(emps);
                 adapter.notifyDataSetChanged();
